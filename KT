@@ -1,0 +1,62 @@
+import java.util.Scanner;
+
+public class InsertionSort {
+
+    public static void insertionSortAscending(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = key;
+        }
+    }
+
+    public static void insertionSortDescending(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j] < key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = key;
+        }
+    }
+
+    public static void printArray(int[] arr) {
+        for (int num : arr)
+            System.out.print(num + " ");
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Nhập số phần tử: ");
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+
+        System.out.println("Nhập các phần tử: ");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        System.out.print("Mảng trước khi sắp xếp: ");
+        printArray(arr);
+
+        int[] arrAsc = arr.clone();
+        insertionSortAscending(arrAsc);
+        System.out.print("Mảng sau khi sắp xếp tăng dần: ");
+        printArray(arrAsc);
+
+        int[] arrDesc = arr.clone();
+        insertionSortDescending(arrDesc);
+        System.out.print("Mảng sau khi sắp xếp giảm dần: ");
+        printArray(arrDesc);
+
+        scanner.close();
+    }
+}
